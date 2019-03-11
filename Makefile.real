@@ -1,0 +1,89 @@
+include versions
+export BACKPORTS_VERSION BACKPORTED_KERNEL_VERSION BACKPORTED_KERNEL_NAME
+ifdef BACKPORTS_GIT_TRACKED
+export BACKPORTS_GIT_TRACKER_DEF=-DBACKPORTS_GIT_TRACKED=\"$(BACKPORTS_GIT_TRACKED)\"
+else
+export BACKPORTS_GIT_TRACKER_DEF=
+endif
+
+# disable built-in rules for this file
+.SUFFIXES:
+
+export CONFIG_=CPTCFG_
+
+
+
+
+
+.PHONY: usedefconfig
+usedefconfig:
+	@./conf --defconfig=defconfig Kconfig
+
+.PHONY: savedefconfig
+savedefconfig:
+	@./conf --savedefconfig=defconfig Kconfig
+
+defconfig:
+	@./conf --defconfig=defconfigs/ath9k Kconfig
+
+.config:
+	@test -f defconfig && $(MAKE) usedefconfig || (			\
+	false )
+
+backport-include/backport/autoconf.h: .config Kconfig.versions Kconfig.kernel
+	@echo -n "Building backport-include/backport/autoconf.h ..."
+	@grep -f local-symbols .config | (				\
+		echo "#ifndef COMPAT_AUTOCONF_INCLUDED"			;\
+		echo "#define COMPAT_AUTOCONF_INCLUDED"			;\
+		echo "/*"						;\
+		echo " * Automatically generated file, don't edit!"	;\
+		echo " * Changes will be overwritten"			;\
+		echo " */"						;\
+		echo ""							;\
+		while read l ; do					\
+			n=$${l%%=*}					;\
+			v=$${l#*=}					;\
+			case $$v in					\
+				y) echo "#define $$n 1" ;;		\
+				m) echo "#define $${n}_MODULE 1" ;;	\
+				\"*) echo "#define $$n $$v" ;;		\
+				[0-9]*) echo "#define $$n $$v" ;;	\
+				*) echo "#warning unknown value for $$n";;\
+			esac						;\
+		done							;\
+		echo "#endif /* COMPAT_AUTOCONF_INCLUDED */"		;\
+	) > backport-include/backport/autoconf.h
+	@echo " done."
+
+.PHONY: modules
+modules: backport-include/backport/autoconf.h
+	@$(MAKE) -f Makefile.build modules
+
+.PHONY: install
+install: modules
+	@$(MAKE) -C $(KLIB_BUILD) M=$(BACKPORT_DIR)			\
+		INSTALL_MOD_DIR=$(KMODDIR) $(KMODPATH_ARG)		\
+		modules_install
+	@echo `sudo modprobe -r ath9k`
+	@/sbin/depmod -a
+	@echo
+	@echo `sudo modprobe ath9k`
+	@echo backported driver installed. original driver uninstalled.
+	@echo
+	
+	
+.PHONY: modules_install
+modules_install: install
+
+.PHONY: uninstall
+uninstall:
+	@echo `sudo modprobe -r ath9k`
+	@./scripts/uninstall.sh
+	@/sbin/depmod -a
+	@echo
+	@echo backported driver uninstalled. original driver installed.
+	@echo `sudo modprobe ath9k`
+
+.PHONY: clean
+clean:
+	@$(MAKE) -f Makefile.build clean

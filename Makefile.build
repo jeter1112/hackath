@@ -1,0 +1,15 @@
+-include .config
+export
+
+.PHONY: modules
+modules:
+	@$(MAKE) -C $(KLIB_BUILD) M=$(BACKPORT_DIR) modules
+
+.PHONY: clean
+clean:
+	@find  .  -name  '*.o'  -type  f  -print  -exec  rm  -rf  {} \;
+	@find  .  -name  '*.ko'  -type  f  -print  -exec  rm  -rf  {} \;
+	@find  .  -name  '*.cmd'  -type  f  -print  -exec  rm  -rf  {} \;
+	@rm -f .config*
+	@rm -f .kernel_config_md5 Kconfig.versions Kconfig.kernel
+	@rm -rf .tmp_versions

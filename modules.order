@@ -1,0 +1,8 @@
+kernel//home/aifs/Documents/backports-4.19.7-1/compat/compat.ko
+kernel//home/aifs/Documents/backports-4.19.7-1/drivers/net/wireless/ath/ath9k/ath9k.ko
+kernel//home/aifs/Documents/backports-4.19.7-1/drivers/net/wireless/ath/ath9k/ath9k_hw.ko
+kernel//home/aifs/Documents/backports-4.19.7-1/drivers/net/wireless/ath/ath9k/ath9k_common.ko
+kernel//home/aifs/Documents/backports-4.19.7-1/drivers/net/wireless/ath/ath9k/ath9k_htc.ko
+kernel//home/aifs/Documents/backports-4.19.7-1/drivers/net/wireless/ath/ath.ko
+kernel//home/aifs/Documents/backports-4.19.7-1/net/wireless/cfg80211.ko
+kernel//home/aifs/Documents/backports-4.19.7-1/net/mac80211/mac80211.ko
