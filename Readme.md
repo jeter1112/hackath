@@ -11,7 +11,7 @@
 
 ## Overview
 
-The WiFi-Hacking project is developed for EE 314. It applies an array of kernel programming techniques to hack your WiFi. However, the project does not focus on understanding full mac80211 protocol for wireless drivers. Instead, it teaches foundational mac80211 concepts, such as AIFS, CW, and CCA threshold. These concepts underly real-world device drivers.
+The WiFi-Hacking project is developed for EE 314. It applies an array of kernel programming techniques to hack your WiFi. However, the project does not focus on understanding full mac80211 protocol in wireless drivers. Instead, it teaches foundational mac80211 concepts, such as AIFS, CW, and CCA threshold. These concepts underly real-world device drivers.
 
 We designed this project with three goals in mind. The project allows you to visualize the result of the techniques you implement. It is based on Atheros drivers and also contains some code demos, but does not force you to read the lengthy code. Finally, WiFi-Hacking provides a challenging problem that demands extra effort; real-world kernel problems are more challenging. Happy Hacking!
 
@@ -98,17 +98,19 @@ $ man modprobe
 ### Throughput_test
 > Experient Environment:
 
-- TODO
+- One server,one router and two clients.  
+![Environment](Images/environment.png)
 
 ----
 ### Visualization
-> Split data from logged file
-- TODO
+> Split data from logged file (optional)
+- Some students may record data by hands. We suggest that you get the thoughput to a file, and write a program to get data. you could refer to [pacmea](https://github.com/jeter1112/pacmea/blob/master/meapac/flog.py). Write your own program to free your hands. 
 ----
 ### Expectation
 > Sample result
 
-- TODO
+- The throughput of Reference Host should be near to 0 Mbits/sec.
+![test.png](Images/TEST.png)
 -----
 
 
@@ -116,17 +118,26 @@ $ man modprobe
 
 ## Challenge_Problem
 
-> To get started...
+> Advanced Visualization
+
+Here, The problem is that how to visualize interframe duration.  
+In ath9k driver, `ath_dbg` function will print information in kernel.you could 
+observe the time stamp by using `kernelshark` software. After you insert
+`ath_dbg` in the right position(send frame finished), you could get the 
+interframe duration by calculating the delta time.
+
 
 
 ## Linux_Installation
 
-> To get started...
+> Install Ubuntu 18.10
+
+You should install the system by yourself. 
 
 ## Linux_Basics
 
-> To get started...
+> Reference
 
+Some shell commands is enough.  
+[Berkely CS188](https://inst.eecs.berkeley.edu/~cs188/fa18/project0.html#UNIXBasics)
 
-## Module_Basics
-> To get started...
