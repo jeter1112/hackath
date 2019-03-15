@@ -41,9 +41,9 @@ else:
 - [Expectation](#Expectation)
 
 ### Introduction
-> experiment environment:
+> Experiment Environment:
 
-The project for this class assume that you use Ubuntu 18.10 with kernel version 4.18.0.
+The project for this class assumes that you use Ubuntu 18.10 with kernel version 4.18.0.
 The experiment environment we provide for you will contain the following:
 - AIFS Desktop(Ubuntu 18.10, atheros ar9xxx wireless card, project files)
 - Refence Desktop(On the way)
