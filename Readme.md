@@ -6,7 +6,7 @@
 
 - [Overview](#overview)
 - [Usage](#usage)
-- [Challenge_Problem](#challenge_Problem)
+- [Challenge_Problem](#Challenge_Problem)
 - [Linux_Installation](#Linux_Installation)
 - [Linux_Basics](#Linux_Basics)
 
@@ -39,7 +39,7 @@ else:
 
 - [Introduction](#introduction)
 - [Module_tips](#module_tips)
-- [Throughput_test](#Throughput_test)
+- [Throughput](#Throughput)
 - [Visualization](#Visualization)
 - [Expectation](#Expectation)
 
@@ -52,8 +52,9 @@ The experiment environment we provide for you will contain the following:
 - Refence Desktop
 - Router
 - Server
+
 We have built the environment in R1114,IPARK A7( an open office).
-![En](Images/En.jpg)
+<img src="Images/En.jpg" width = "600" height = "480" alt="ref1" align=center />
 
 > Project Files:
 
@@ -88,6 +89,7 @@ $ sudo make uninstall
 - [Document](https://wireless.wiki.kernel.org/_media/en/developers/documentation/mac80211.pdf) is a PDF file about wireless architecture.
 
 -----
+
 ### Module_tips
 >Module operation
 
@@ -99,7 +101,8 @@ $ man modprobe
 ```
 
 ----
-### Throughput_test
+
+### Throughput
 > Experiment Environment:
 
 - One server,one router and two clients.  
@@ -116,18 +119,19 @@ $ man modprobe
 
 - The server runs `iperf3` in `Server Mode`. AIFS and Ref are in `Client Mode`(For TCP, specify `ip` and `port`).
 - sample demo(AIFS client).
-![Client](Images/client.gif)
+<img src="Images/client.gif" width = "600" height = "480" alt="ref1" align=center />
 
-- The server is a `Rraspberry Pi`. You could use remote log tool `ssh` to enter `Rraspberry Pi`(`passward`: lablab).
+- The server is a `Rraspberry Pi`. You could use remote log tool `ssh` to enter `Rraspberry Pi`(`password`: lablab).
 - Server demo(Server)
-![Server](Images/ssh.gif)
-
+<img src="Images/ssh.gif" width = "600" height = "480" alt="ref1" align=center />
 
 ----
+
 ### Visualization
 > Split data from logged file (optional)
-- Some students may record data by hands. We suggest that you get the thoughput to a file, and write a program to get data. you could refer to [pacmea](https://github.com/jeter1112/pacmea/blob/master/meapac/flog.py). Write your own program to free your hands. 
+- Some students may record data by hands. We suggest that you redirect throughput to a file, and write a program to get the data. you could refer to [pacmea](https://github.com/jeter1112/pacmea/blob/master/meapac/flog.py). Write your own program to free your hands. 
 ----
+
 ### Expectation(Demo)
 > Two Normal Clients 
 
@@ -145,8 +149,6 @@ $ man modprobe
 <img src="Images/after_ref.gif" width = "400" height = "300" alt="ref1" align=center /><img src="Images/after_aifs.gif" width = "400" height = "300" alt="ref1" align=center />
 
 -----
-
-
 
 
 ## Challenge_Problem
