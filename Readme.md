@@ -1,7 +1,6 @@
 # Project : WiFi-Hacking
-<img src="Images/after_ref2.gif" width = "400" height = "300" alt="ref1" align=center /> 
 
-<img src="Images/after_aifs2.gif" width = "400" height = "300" alt="ref1" align=center /> 
+<img src="Images/after_ref2.gif" width = "400" height = "300" alt="ref1" align=center /><img src="Images/after_aifs2.gif" width = "400" height = "300" alt="ref1" align=center /> 
 
 ## Table of Contents
 
@@ -134,9 +133,7 @@ $ man modprobe
 
 - Two Normal clients run iperf3 in tcp client mode with port 5201/5210 and 15 seconds.
 
-<img src="Images/before_ref.gif" width = "400" height = "300" alt="ref1" align=center />
-
-<img src="Images/before_aifs.gif" width = "400" height = "300" alt="ref1" align=center />
+<img src="Images/before_ref.gif" width = "400" height = "300" alt="ref1" align=center /><img src="Images/before_aifs.gif" width = "400" height = "300" alt="ref1" align=center />
 
 
 
@@ -145,9 +142,7 @@ $ man modprobe
 
 - The Cover is a good one result. Here is another one. If the AIFS sends packets first, the Ref could not send even one packet until the AIFS finishes its process.
 
-<img src="Images/after_ref.gif" width = "400" height = "300" alt="ref1" align=center />
-
-<img src="Images/after_aifs.gif" width = "400" height = "300" alt="ref1" align=center />
+<img src="Images/after_ref.gif" width = "400" height = "300" alt="ref1" align=center /><img src="Images/after_aifs.gif" width = "400" height = "300" alt="ref1" align=center />
 
 -----
 
