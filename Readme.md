@@ -1,4 +1,8 @@
 # Project : WiFi-Hacking
+<img src="Images/after_ref2.gif" width = "400" height = "300" alt="ref1" align=center /> 
+
+<img src="Images/after_aifs2.gif" width = "400" height = "300" alt="ref1" align=center /> 
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -6,7 +10,7 @@
 - [Challenge_Problem](#challenge_Problem)
 - [Linux_Installation](#Linux_Installation)
 - [Linux_Basics](#Linux_Basics)
-- [Module_Basics](#Module_Basics)
+
 
 
 ## Overview
@@ -20,7 +24,7 @@ We designed this project with three goals in mind. The project allows you to vis
 ``` python
 if (familiar_with Linux and kernel_module):
     goto Usage + Challenge_Problem
-elif know nothing:
+elif neither:
     goto Usage
 else:
     follow all the sections
@@ -46,10 +50,11 @@ else:
 The project for this class assumes that you use Ubuntu 18.10 with kernel version 4.18.0.
 The experiment environment we provide for you will contain the following:
 - AIFS Desktop(Ubuntu 18.10, atheros ar9xxx wireless card, project files)
-- Refence Desktop(On the way)
+- Refence Desktop
 - Router
-- Server(On the way)
-
+- Server
+We have built the environment in R1114,IPARK A7( an open office).
+![En](Images/En.jpg)
 
 > Project Files:
 
@@ -96,21 +101,54 @@ $ man modprobe
 
 ----
 ### Throughput_test
-> Experient Environment:
+> Experiment Environment:
 
 - One server,one router and two clients.  
 ![Environment](Images/environment.png)
+
+> Software tools
+
+- To prove the effect of AIFS, we could measure throughput.
+- Intuition: small AIFS value ====> High throughput(in crowded place).
+- In this project, we use `iperf3` as the measurement tool and focus on TCP protocol.`iperf3` supports
+    `Server Mode` and `Client Mode`. Run `iperf3 -h` for help.
+
+> Basic Settings
+
+- The server runs `iperf3` in `Server Mode`. AIFS and Ref are in `Client Mode`(For TCP, specify `ip` and `port`).
+- sample demo(AIFS client).
+![Client](Images/client.gif)
+
+- The server is a `Rraspberry Pi`. You could use remote log tool `ssh` to enter `Rraspberry Pi`(`passward`: lablab).
+- Server demo(Server)
+![Server](Images/ssh.gif)
+
 
 ----
 ### Visualization
 > Split data from logged file (optional)
 - Some students may record data by hands. We suggest that you get the thoughput to a file, and write a program to get data. you could refer to [pacmea](https://github.com/jeter1112/pacmea/blob/master/meapac/flog.py). Write your own program to free your hands. 
 ----
-### Expectation
-> Sample result
+### Expectation(Demo)
+> Two Normal Clients 
 
-- The throughput of Reference Host should be near to 0 Mbits/sec.
-![test.png](Images/TEST.png)
+- Two Normal clients run iperf3 in tcp client mode with port 5201/5210 and 15 seconds.
+
+<img src="Images/before_ref.gif" width = "400" height = "300" alt="ref1" align=center />
+
+<img src="Images/before_aifs.gif" width = "400" height = "300" alt="ref1" align=center />
+
+
+
+
+> One Normal + One AIFS (The right one is AIFS)
+
+- The Cover is a good one result. Here is another one. If the AIFS sends packets first, the Ref could not send even one packet until the AIFS finishes its process.
+
+<img src="Images/after_ref.gif" width = "400" height = "300" alt="ref1" align=center />
+
+<img src="Images/after_aifs.gif" width = "400" height = "300" alt="ref1" align=center />
+
 -----
 
 
